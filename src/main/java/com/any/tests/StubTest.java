@@ -1,13 +1,13 @@
 package com.any.tests;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.testng.annotations.Test;
 
 import com.any.pages.SampleGooglePage;
-import com.mgiorda.testng.AbstractTest;
+import com.mgiorda.pagetest.AbstractTest;
+import com.mgiorda.test.TestProperties;
 
-@PropertySource("classpath:/my.properties")
+@TestProperties("my-test.properties")
 public class StubTest extends AbstractTest {
 
 	@Value("${test.host}")

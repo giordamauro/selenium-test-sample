@@ -1,6 +1,6 @@
 package com.any.pages;
 
-import com.mgiorda.testng.AbstractPage;
+import com.mgiorda.pagetest.AbstractPage;
 
 public class SubPageStub extends AbstractPage {
 
