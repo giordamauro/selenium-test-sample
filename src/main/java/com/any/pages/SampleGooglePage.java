@@ -1,15 +1,15 @@
 package com.any.pages;
 
-import org.openqa.selenium.support.FindBy;
 import org.springframework.beans.factory.annotation.Value;
 
+import com.mgiorda.page.LocatorBy;
+import com.mgiorda.page.PageProperties;
 import com.mgiorda.pagetest.AbstractPage;
-import com.mgiorda.test.PageProperties;
 
 @PageProperties("page.properties")
 public class SampleGooglePage extends AbstractPage {
 
-	@FindBy(name = "q")
+	@LocatorBy(name = "q")
 	private PageElement searchBox;
 
 	@Value("${page.someProperty}")
