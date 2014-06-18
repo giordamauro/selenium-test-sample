@@ -52,13 +52,14 @@
 		</property>
 	</bean>
 
-	<bean class="com.mgiorda.test.TestPoolRunner">
-		<constructor-arg type="com.mgiorda.test.SuiteTestRun[]">
+	<bean class="com.mgiorda.test.TestRunner">
+		<property name="parallel" value="false"/>
+		<property name="suites">
 			<list>
 				<ref bean="suite1" />
 				<ref bean="suite2" />
 			</list>
-		</constructor-arg>
+		</property>
 	</bean>
 
 </beans>

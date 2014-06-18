@@ -7,7 +7,7 @@ import com.any.pages.SampleGooglePage;
 import com.mgiorda.test.AbstractTest;
 import com.mgiorda.test.TestProperties;
 
-@TestProperties("properties/${suite.env:dev}-test.properties")
+@TestProperties("test-properties/${suite.env:dev}-test.properties")
 public class StubTest extends AbstractTest {
 
 	@Value("${${suite.env:dev}.host}")

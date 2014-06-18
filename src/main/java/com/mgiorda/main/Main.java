@@ -3,17 +3,24 @@ package com.mgiorda.main;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import com.mgiorda.test.TestPoolRunner;
+import com.mgiorda.test.TestRunner;
 
 public class Main {
 
-	@SuppressWarnings("resource")
+	private static final String DEFAULT_SUITE_CONTEXT = "suite-context.xml";
+
 	public static void main(String[] args) {
 
-		final String defaultTestContext = "suite-context.xml";
-		ApplicationContext mainApplicationContext = new GenericXmlApplicationContext(defaultTestContext);
+		String suiteContext = DEFAULT_SUITE_CONTEXT;
 
-		TestPoolRunner testRunner = mainApplicationContext.getBean(TestPoolRunner.class);
+		if (args != null && args.length == 1) {
+			suiteContext = args[0];
+		}
+
+		@SuppressWarnings("resource")
+		ApplicationContext applicationContext = new GenericXmlApplicationContext(suiteContext);
+
+		TestRunner testRunner = applicationContext.getBean(TestRunner.class);
 
 		testRunner.run();
 	}
