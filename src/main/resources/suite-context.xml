@@ -18,28 +18,35 @@
 
 	<context:annotation-config />
 
-	<context:property-placeholder location="classpath:/context/test-context.properties" ignore-unresolvable="true"/>
 
-	<bean id="chromeFactory" class="com.mgiorda.page.browser.ChromeFactory">
-		<constructor-arg type="java.util.Map">
-			<util:map>
-				<entry key="WINDOWS" value="${chrome.driver.windows}"/>
-				<entry key="UNIX" value="${chrome.driver.unix}"/>
-			</util:map>
-		</constructor-arg>
+
+	<bean id="suite1" class="com.mgiorda.test.TestSuiteRun">
+		<constructor-arg value="suite.xml" />
+		<property name="properties">
+			<util:properties>
+				<prop key="test.waitTimeOut">60</prop>
+				<prop key="test.browser">FIREFOX</prop>
+			</util:properties>
+		</property>
+	</bean>
+	
+	<bean id="suite2" class="com.mgiorda.test.TestSuiteRun">
+		<constructor-arg value="suite.xml" />
+		<property name="properties">
+			<util:properties>
+				<prop key="test.waitTimeOut">60</prop>
+				<prop key="test.browser">CHROME</prop>
+			</util:properties>
+		</property>
 	</bean>
 
-
-	<bean id="webDriverFactory" class="com.mgiorda.page.WebDriverFactory">
-		<constructor-arg type="java.util.Map">
-			<util:map>
-				<entry key="CHROME" value-ref="chromeFactory"/>
-				<entry key="FIREFOX" value-ref="firefoxFactory"/>
-<!-- 				<entry key="INTERNET_EXPLORER" value-ref="iexplorerFactory"/> -->
-<!-- 				<entry key="REMOTE" value-ref="remoteFactory"/> -->
-			</util:map>
+	<bean class="com.mgiorda.test.TestPoolRunner">
+		<constructor-arg type="com.mgiorda.test.TestSuiteRun[]">
+			<list>
+				<ref bean="suite1" />
+				<ref bean="suite2" />
+			</list>
 		</constructor-arg>
-		<constructor-arg type="int" value="${load.waitTimeOut}" />
 	</bean>
 
 </beans>

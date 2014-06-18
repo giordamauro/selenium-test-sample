@@ -2,14 +2,14 @@ package com.any.pages;
 
 import org.springframework.beans.factory.annotation.Value;
 
-import com.mgiorda.page.LocatorBy;
+import com.mgiorda.page.LocateBy;
 import com.mgiorda.page.PageProperties;
-import com.mgiorda.pagetest.AbstractPage;
+import com.mgiorda.test.AbstractPage;
 
 @PageProperties("page.properties")
 public class SampleGooglePage extends AbstractPage {
 
-	@LocatorBy(name = "q")
+	@LocateBy(name = "q")
 	private PageElement searchBox;
 
 	@Value("${page.someProperty}")

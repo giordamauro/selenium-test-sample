@@ -1,14 +1,14 @@
 package com.mgiorda.main;
 
-import com.mgiorda.page.Browser;
-import com.mgiorda.test.SuiteConfiguration;
-import com.mgiorda.test.TestSuiteRunner;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class Main {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 
-		SuiteConfiguration suiteConfiguration = new SuiteConfiguration("suite.xml", Browser.CHROME);
-		new TestSuiteRunner(suiteConfiguration).run();
+		final String defaultTestContext = "suite-context.xml";
+
+		new GenericXmlApplicationContext(defaultTestContext);
 	}
 }
