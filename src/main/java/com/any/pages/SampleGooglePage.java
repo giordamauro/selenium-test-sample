@@ -6,7 +6,7 @@ import com.mgiorda.page.LocateBy;
 import com.mgiorda.page.PageProperties;
 import com.mgiorda.test.AbstractPage;
 
-@PageProperties("page.properties")
+@PageProperties("properties/page.properties")
 public class SampleGooglePage extends AbstractPage {
 
 	@LocateBy(name = "q")

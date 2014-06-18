@@ -7,10 +7,10 @@ import com.any.pages.SampleGooglePage;
 import com.mgiorda.test.AbstractTest;
 import com.mgiorda.test.TestProperties;
 
-@TestProperties("my-test.properties")
+@TestProperties("properties/${suite.env:dev}-test.properties")
 public class StubTest extends AbstractTest {
 
-	@Value("${test.host}")
+	@Value("${${suite.env:dev}.host}")
 	private String host;
 
 	@Test(invocationCount = 3, threadPoolSize = 2)

@@ -18,39 +18,42 @@
 
 	<context:annotation-config />
 
-	<bean id="fastDateFormat" class="org.apache.commons.lang.time.FastDateFormat" factory-method="getInstance">
-	    <constructor-arg value="MM-dd-yyyy_HH.mm.ss"/>
+	<bean id="fastDateFormat" class="org.apache.commons.lang.time.FastDateFormat"
+		factory-method="getInstance">
+		<constructor-arg value="MM-dd-yyyy_HH.mm.ss" />
 	</bean>
 
-	<bean id="currentDate" class="java.util.Date" factory-bean="fastDateFormat" factory-method="format">
-	    <constructor-arg>
-	        <bean class="java.util.Date"/>
-	    </constructor-arg>
+	<bean id="currentDate" class="java.util.Date" factory-bean="fastDateFormat"
+		factory-method="format">
+		<constructor-arg>
+			<bean class="java.util.Date" />
+		</constructor-arg>
 	</bean>
 
-	<bean id="suite1" class="com.mgiorda.test.TestSuiteRun">
-		<constructor-arg value="suite.xml" />
+	<bean id="suite1" class="com.mgiorda.test.SuiteTestRun">
+		<property name="file" value="suites/suite.xml" />
+		<property name="browser" value="FIREFOX" />
+		<property name="outputDirectory" value="#{'logs/test-result/suite1/' + currentDate}" />
 		<property name="properties">
 			<util:properties>
-				<prop key="test.waitTimeOut">60</prop>
-				<prop key="test.browser">FIREFOX</prop>
+				<prop key="env">dev</prop>
 			</util:properties>
 		</property>
-		<property name="outputDirectory" value="#{'logs/test-result/' + currentDate}"/>
 	</bean>
-	
-	<bean id="suite2" class="com.mgiorda.test.TestSuiteRun">
-		<constructor-arg value="suite.xml" />
+
+	<bean id="suite2" class="com.mgiorda.test.SuiteTestRun">
+		<property name="file" value="suites/suite.xml" />
+		<property name="browser" value="CHROME" />
+		<property name="outputDirectory" value="#{'logs/test-result/suite2/' + currentDate}" />
 		<property name="properties">
 			<util:properties>
-				<prop key="test.waitTimeOut">60</prop>
-				<prop key="test.browser">CHROME</prop>
+				<prop key="env">test</prop>
 			</util:properties>
 		</property>
 	</bean>
 
 	<bean class="com.mgiorda.test.TestPoolRunner">
-		<constructor-arg type="com.mgiorda.test.TestSuiteRun[]">
+		<constructor-arg type="com.mgiorda.test.SuiteTestRun[]">
 			<list>
 				<ref bean="suite1" />
 				<ref bean="suite2" />
