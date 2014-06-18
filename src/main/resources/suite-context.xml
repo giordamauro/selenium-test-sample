@@ -18,7 +18,15 @@
 
 	<context:annotation-config />
 
+	<bean id="fastDateFormat" class="org.apache.commons.lang.time.FastDateFormat" factory-method="getInstance">
+	    <constructor-arg value="MM-dd-yyyy_HH.mm.ss"/>
+	</bean>
 
+	<bean id="currentDate" class="java.util.Date" factory-bean="fastDateFormat" factory-method="format">
+	    <constructor-arg>
+	        <bean class="java.util.Date"/>
+	    </constructor-arg>
+	</bean>
 
 	<bean id="suite1" class="com.mgiorda.test.TestSuiteRun">
 		<constructor-arg value="suite.xml" />
@@ -28,6 +36,7 @@
 				<prop key="test.browser">FIREFOX</prop>
 			</util:properties>
 		</property>
+		<property name="outputDirectory" value="#{'logs/test-result/' + currentDate}"/>
 	</bean>
 	
 	<bean id="suite2" class="com.mgiorda.test.TestSuiteRun">
