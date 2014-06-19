@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.testng.annotations.Test;
 
 import com.any.pages.SampleGooglePage;
+import com.mgiorda.annotations.TestProperties;
 import com.mgiorda.test.AbstractTest;
-import com.mgiorda.test.TestProperties;
 
 @TestProperties("test-properties/${suite.env:dev}-test.properties")
 public class StubTest extends AbstractTest {
@@ -17,6 +17,8 @@ public class StubTest extends AbstractTest {
 	public void test() {
 
 		SampleGooglePage page = new SampleGooglePage();
+
+		logger.info("Created Google page");
 
 		page.search(host);
 	}
