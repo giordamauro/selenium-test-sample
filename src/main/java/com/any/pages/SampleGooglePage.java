@@ -11,7 +11,7 @@ import com.mgiorda.test.AbstractPage;
 @PageURL("${dev.host}/")
 public class SampleGooglePage extends AbstractPage {
 
-	@LocateBy(name = "qaaaaaasfasdfsdfasf")
+	@LocateBy(name = "${locator.searchBox.name}")
 	private PageElement searchBox;
 
 	@Value("${page.someProperty}")
