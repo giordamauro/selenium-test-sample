@@ -21,6 +21,7 @@ public class StubTest extends AbstractTest {
 		logger.info("Created Google page");
 
 		page.search(host);
+		page.clickOnDoodle();
 
 		PageAssert.assertTitle(page, "Google");
 	}
