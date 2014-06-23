@@ -4,7 +4,7 @@ import com.mgiorda.annotations.By;
 import com.mgiorda.annotations.Locate;
 import com.mgiorda.test.AbstractElement;
 
-public class GoogleDoodle extends AbstractElement {
+class GoogleDoodle extends AbstractElement {
 
 	@Locate(@By(xpath = "./a"))
 	private PageElement link;
