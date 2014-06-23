@@ -34,20 +34,4 @@ public class SampleGooglePage extends AbstractPage {
 	public void clickOnDoodle() {
 		doodle.click();
 	}
-
-	public static class GoogleDoodle extends AbstractElement {
-
-		public GoogleDoodle(PageElement pageElement) {
-			super(pageElement);
-		}
-
-		public void click() {
-			pageElement.click();
-		}
-
-		// public void algo() {
-		// Locator locators = null;
-		// elementHandler.getElement(locators);
-		// }
-	}
 }
