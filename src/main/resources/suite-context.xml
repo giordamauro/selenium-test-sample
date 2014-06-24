@@ -18,8 +18,6 @@
 
 	<context:annotation-config />
 
-	<import resource="classpath:/context/page-context.xml"/>
-
 	<bean id="fastDateFormat" class="org.apache.commons.lang.time.FastDateFormat"
 		factory-method="getInstance">
 		<constructor-arg value="MM-dd-yyyy_HH.mm.ss" />
