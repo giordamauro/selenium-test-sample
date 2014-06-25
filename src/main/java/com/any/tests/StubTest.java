@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.testng.annotations.Test;
 
 import com.any.pages.SampleGooglePage;
-import com.mgiorda.annotations.TestContext;
-import com.mgiorda.annotations.TestProperties;
+import com.mgiorda.annotation.TestContext;
+import com.mgiorda.annotation.TestProperties;
 import com.mgiorda.test.AbstractTest;
 
 @TestProperties("test-properties/${suite.env:dev}-test.properties")

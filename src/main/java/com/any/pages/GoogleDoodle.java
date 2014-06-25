@@ -1,7 +1,7 @@
 package com.any.pages;
 
-import com.mgiorda.annotations.By;
-import com.mgiorda.annotations.Locate;
+import com.mgiorda.annotation.By;
+import com.mgiorda.annotation.Locate;
 import com.mgiorda.test.AbstractElement;
 
 class GoogleDoodle extends AbstractElement {
